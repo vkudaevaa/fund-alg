@@ -1,0 +1,3 @@
+The number of characters in a line: 0
+The number of characters in a line: 0
+The number of characters in a line: 1

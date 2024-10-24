@@ -1,0 +1,3 @@
+The number of letters in a line: 5
+The number of letters in a line: 2
+The number of letters in a line: 3
