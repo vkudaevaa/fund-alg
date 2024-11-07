@@ -46,6 +46,7 @@ void menu(student* students, int count, FILE* output){
                     id = strtoul(in, &end, 10);
                     if (*end != '\0'){
                         printf("Error: Invalid format\n");
+                        free(in);
                         break;
                     }
                     student* found_id = NULL;
@@ -68,10 +69,12 @@ void menu(student* students, int count, FILE* output){
                     }
                     if (count_id == 0){
                         printf("Student with ID %u not found.\n", id);
+                        free(in);
                         break;
                     }
                     if (flag_id){
                         free(found_id);
+                        free(in);
                         break;
                     }
 
@@ -107,10 +110,12 @@ void menu(student* students, int count, FILE* output){
                     }
                     if (count_name == 0){
                         printf("Student with name %s not found.\n", name);
+                        free(name);
                         break;
                     }
                     if (flag_name){
                         free(found_name);
+                        free(name);
                         break;
                     }
                 }
@@ -145,10 +150,12 @@ void menu(student* students, int count, FILE* output){
                     }
                     if (count_surname == 0){
                         printf("Student with surname %s not found.\n", surname);
+                        free(surname);
                         break;
                     }
                     if (flag_surname){
                         free(found_surname);
+                        free(surname);
                         break;
                     }
 
@@ -184,10 +191,12 @@ void menu(student* students, int count, FILE* output){
                     }
                     if (count_group == 0){
                         printf("Student with group %s not found.\n", group);
+                        free(group);
                         break;
                     }
                     if (flag_group){
                         free(found_group);
+                        free(group);
                         break;
                     }
 
@@ -282,8 +291,5 @@ int main(int argc, char* argv[]){
     }
     menu(students, count, output);
     freeStudents(students, count);
-    fclose(output);
-
-    
-    
+    fclose(output); 
 }
