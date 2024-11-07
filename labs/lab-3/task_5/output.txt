@@ -1,0 +1,8 @@
+Average score = 3.70
+Surname: Ivanov Name: Aleksandr Average score: 4.20
+Surname: Kozlov Name: Andrey Average score: 3.80
+Surname: Pavlov Name: Roman Average score: 4.40
+Surname: Kuznetsov Name: Egor Average score: 3.80
+Surname: Morozov Name: Anton Average score: 3.80
+Surname: Lebedev Name: Vladimir Average score: 3.80
+Surname: Semenov Name: Artem Average score: 4.20
