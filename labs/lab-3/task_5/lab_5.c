@@ -6,41 +6,7 @@
 #include "l_5.h"
 #include "func_5.c"
 
-int main(int argc, char* argv[]){
-    errorCode opt = dataValidation(argc, argv);
-    if (opt == OPT_ERROR_ARGUMENTS){
-        fprintf(stderr, "Error: Invalid number of arguments\n");
-        return OPT_ERROR_ARGUMENTS;
-    }else if (opt == OPT_ERROR_FILE){
-        fprintf(stderr, "Error: Error when using the function realpath\n");
-        return OPT_ERROR_FILE;
-    }else if (opt == OPT_ERROR_FILE_NAME){
-        fprintf(stderr, "Error: The files must have different names\n");
-        return OPT_ERROR_FILE_NAME;
-    }
-
-    student *students = NULL;
-    int count = 0;
-    const char* filename = argv[1];
-    opt = readingFile(filename, &students, &count);
-    if (opt == OPT_ERROR_FILE){
-        fprintf(stderr, "Error: Error open input file\n");
-        return OPT_ERROR_FILE;
-    }else if (opt == OPT_ERROR_MEMORY){
-        fprintf(stderr,"Error: Memory allocation error\n");
-        return OPT_ERROR_MEMORY;
-    }else if (opt == OPT_ERROR_FORMAT){
-        fprintf(stderr, "Error: Invalid format\n");
-        return OPT_ERROR_FORMAT;
-    }
-
-    FILE* output = fopen(argv[2], "w");
-    if (output == NULL){
-        fprintf(stderr, "Error: Error open output file\n");
-        freeStudents(students, count);
-        return OPT_ERROR_OPEN_FILE;
-    }
-
+void menu(student* students, int count, FILE* output){
     while (true){
         printMainMenu();
         printf("The selected option >>> ");
@@ -278,5 +244,46 @@ int main(int argc, char* argv[]){
             continue;
         }
     }
+}
+
+int main(int argc, char* argv[]){
+    errorCode opt = dataValidation(argc, argv);
+    if (opt == OPT_ERROR_ARGUMENTS){
+        fprintf(stderr, "Error: Invalid number of arguments\n");
+        return OPT_ERROR_ARGUMENTS;
+    }else if (opt == OPT_ERROR_FILE){
+        fprintf(stderr, "Error: Error when using the function realpath\n");
+        return OPT_ERROR_FILE;
+    }else if (opt == OPT_ERROR_FILE_NAME){
+        fprintf(stderr, "Error: The files must have different names\n");
+        return OPT_ERROR_FILE_NAME;
+    }
+
+    student *students = NULL;
+    int count = 0;
+    const char* filename = argv[1];
+    opt = readingFile(filename, &students, &count);
+    if (opt == OPT_ERROR_FILE){
+        fprintf(stderr, "Error: Error open input file\n");
+        return OPT_ERROR_FILE;
+    }else if (opt == OPT_ERROR_MEMORY){
+        fprintf(stderr,"Error: Memory allocation error\n");
+        return OPT_ERROR_MEMORY;
+    }else if (opt == OPT_ERROR_FORMAT){
+        fprintf(stderr, "Error: Invalid format\n");
+        return OPT_ERROR_FORMAT;
+    }
+
+    FILE* output = fopen(argv[2], "w");
+    if (output == NULL){
+        fprintf(stderr, "Error: Error open output file\n");
+        freeStudents(students, count);
+        return OPT_ERROR_OPEN_FILE;
+    }
+    menu(students, count, output);
+    freeStudents(students, count);
+    fclose(output);
+
+    
     
 }
