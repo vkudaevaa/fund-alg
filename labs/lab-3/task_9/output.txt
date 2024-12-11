@@ -1,0 +1,17 @@
+Orange 2 6
+BANANA 1 6
+Apple 3 5
+NULL
+NULL
+NULL
+mango 5 5
+grapes 1 6
+PeAcH 2 5
+NULL
+NULL
+NULL
+strawberry 1 10
+pineapple 1 9
+NULL
+NULL
+NULL
